@@ -4,7 +4,12 @@
   become: true
 
   tasks:
+   - name: Delete old war file
+     - stat: path=/root/tomcat/apache-tomcat-8.0.53/webapps/*.LoginWebApp
+       register: LoginWebApp
+     - shell: rm -rf /root/tomcat/apache-tomcat-8.0.53/webapps/*.LoginWebApp
+       when: LoginWebApp.stat.exists
    - name: Download wa file from arifatory
      get_url:
-       url:  http://10.207.146.155:8081/artifactory/Jenkins-snapshot/com/javawebtutor/LoginWebApp/1.0-SNAPSHOT/LoginWebApp-1.0-20180809.085803-1.war
+       url:  http://10.207.146.155:8081/artifactory/Jenkins-snapshot/com/javawebtutor/LoginWebApp/1.0-SNAPSHOT/LoginWebApp-1.0-20180807.094227-1.war
        dest: /root/tomcat/apache-tomcat-8.0.53/webapps
