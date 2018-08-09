@@ -4,10 +4,11 @@
   become: true
 
   tasks:
-   - name: Delete old war file
+   - name: register  old war file
      stat: 
        path: /root/tomcat/apache-tomcat-8.0.53/webapps/*.LoginWebApp
      register: LoginWebApp
+   - name: Delete old war file
      shell: rm -rf /root/tomcat/apache-tomcat-8.0.53/webapps/*.LoginWebApp
      when: LoginWebApp.stat.exists
    - name: Download wa file from arifatory
