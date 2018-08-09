@@ -17,9 +17,9 @@
  #   notify:
  #       - restart tomcat7
    
-- name: Delete remote war file
-    file: path= "{{ warRemotePath }}"/"{{ warName }}" state=absent
-
-  handlers:
-    - name: Restart tomcat8
-      service: name=tomcat8 state=restarted
+#- name: Delete remote war file
+#    file: path= "{{ warRemotePath }}"/"{{ warName }}" state=absent
+#
+#  handlers:
+#    - name: Restart tomcat8
+#      service: name=tomcat8 state=restarted
