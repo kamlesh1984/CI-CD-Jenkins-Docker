@@ -4,17 +4,17 @@
   become: true
 
   tasks:
-   - name: Ansible delete file 
+   - name: Ansible delete file
       find:
        paths: /root/tomcat/apache-tomcat-8.0.53/webapps/
        patterns: LoginWebApp*.war
-     register: files_to_delete
+      register: files_to_delete
 
    - name: Ansible remove file 
       file:
        path: "{{ item.path }}"
        state: absent
-     with_items: "{{ files_to_delete.files }}"  
+      with_items: "{{ files_to_delete.files }}"  
 
    - name: Download wa file from arifatory
       get_url:
