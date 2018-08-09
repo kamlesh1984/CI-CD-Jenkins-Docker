@@ -5,18 +5,18 @@
 
   tasks:
    - name: Ansible delete file
-      find:
+     find:
        paths: /root/tomcat/apache-tomcat-8.0.53/webapps/
-       patterns: LoginWebApp*.war
-      register: files_to_delete
+       patterns: "LoginWebApp*.war"
+     register: files_to_delete
 
    - name: Ansible remove file 
-      file:
+     file:
        path: "{{ item.path }}"
        state: absent
-      with_items: "{{ files_to_delete.files }}"  
+     with_items: "{{ files_to_delete.files }}"  
 
    - name: Download wa file from arifatory
-      get_url:
-        url:  http://10.207.146.155:8081/artifactory/Jenkins-snapshot/com/javawebtutor/LoginWebApp/1.0-SNAPSHOT/LoginWebApp-1.0-20180809.085803-1.war
-        dest: /root/tomcat/apache-tomcat-8.0.53/webapps
+     get_url:
+       url:  http://10.207.146.155:8081/artifactory/Jenkins-snapshot/com/javawebtutor/LoginWebApp/1.0-SNAPSHOT/LoginWebApp-1.0-20180809.085803-1.war
+       dest: /root/tomcat/apache-tomcat-8.0.53/webapps
