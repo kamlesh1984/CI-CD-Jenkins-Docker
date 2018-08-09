@@ -5,8 +5,8 @@
   - warRemotePath: /root/tomcat/apache-tomcat-8.0.53/webapps
   - name: Download file with custom HTTP headers
     get_url:
-      url: {{ warName }}
-      dest: {{ warRemotePath }}
+      url: "{{ warName }}"
+      dest: "{{ warRemotePath }}"
 
  # tasks:
  # - name: Download WAR to server
@@ -18,7 +18,7 @@
  #       - restart tomcat7
    
   - name: Delete remote war file
-    file: path={{ warRemotePath }}/{{ warName }} state=absent
+    file: path= "{{ warRemotePath }}"/"{{ warName }}" state=absent
 
   handlers:
     - name: Restart tomcat8
